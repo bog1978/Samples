@@ -44,27 +44,43 @@ namespace LazyPirate.Client2
                     while (true)
                     {
                         var topic = progressSubscriber.ReceiveFrameString();
-                        RequestSocket.ProgressTopic progressTopic;
-                        Enum.TryParse(topic, out progressTopic);
-                        switch (progressTopic)
+                        switch (topic)
                         {
-                            case RequestSocket.ProgressTopic.Send:
+                            case "Send":
                                 Console.WriteLine("C: Sending {0}", requestString);
                                 break;
-                            case RequestSocket.ProgressTopic.Retry:
+                            case "Retry":
                                 Console.WriteLine("C: No response from server, retrying...");
                                 break;
-                            case RequestSocket.ProgressTopic.Failure:
+                            case "Failure":
                                 Console.WriteLine("C: Server seems to be offline, abandoning");
                                 break;
-                            case RequestSocket.ProgressTopic.Success:
+                            case "Success":
                                 Console.WriteLine("C: Server replied OK");
                                 break;
                             default:
                                 throw new ArgumentOutOfRangeException();
                         }
 
-
+                        //RequestSocket.ProgressTopic progressTopic;
+                        //Enum.TryParse(topic, out progressTopic);
+                        //switch (progressTopic)
+                        //{
+                        //    case RequestSocket.ProgressTopic.Send:
+                        //        Console.WriteLine("C: Sending {0}", requestString);
+                        //        break;
+                        //    case RequestSocket.ProgressTopic.Retry:
+                        //        Console.WriteLine("C: No response from server, retrying...");
+                        //        break;
+                        //    case RequestSocket.ProgressTopic.Failure:
+                        //        Console.WriteLine("C: Server seems to be offline, abandoning");
+                        //        break;
+                        //    case RequestSocket.ProgressTopic.Success:
+                        //        Console.WriteLine("C: Server replied OK");
+                        //        break;
+                        //    default:
+                        //        throw new ArgumentOutOfRangeException();
+                        //}
                     }
                 }
             });

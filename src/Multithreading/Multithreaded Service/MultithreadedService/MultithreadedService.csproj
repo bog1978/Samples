@@ -92,7 +92,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NetMQ">
-      <Version>4.0.0-beta</Version>
+      <Version>4.0.1.8</Version>
+    </PackageReference>
+    <PackageReference Include="NetMQ.Devices">
+      <Version>1.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
