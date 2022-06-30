@@ -267,7 +267,8 @@ namespace MajordomoTests
                 }
                 catch (ApplicationException ex)
                 {
-                    Assert.That(ex.Message, Is.StringContaining("MDP Version mismatch"));
+                    //Assert.That(ex.Message, Is.StringContaining("MDP Version mismatch"));
+                    Assert.That(ex.Message, Does.Contain("MDP Version mismatch"));
                 }
             }
         }
